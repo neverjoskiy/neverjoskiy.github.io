@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameSense Pack</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            color: #e0e0e0;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #b0b0b0;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .button-wrapper {
+            margin-top: 30px;
+        }
+
+        .animated-button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .animated-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+            background-color: #0056b3;
+        }
+
+        .animated-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.3);
+        }
+
+        .animated-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.5s ease;
+        }
+
+        .animated-button:hover::after {
+            animation: pulse 1s infinite;
+        }
+
+        .password-container {
+            margin-top: 20px;
+            display: none;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .password-container input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #2b2b2b;
+            color: #fff;
+            font-size: 1em;
+            margin-right: 10px;
+            width: 200px;
+        }
+
+        .password-container input::placeholder {
+            color: #888;
+        }
+
+        .password-container button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .password-container button:hover {
+            background-color: #218838;
+        }
+
+        .error-message {
+            color: #dc3545;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .download-options {
+            margin-top: 30px;
+            display: none; /* Изначально скрыт */
+            animation: fadeIn 0.8s ease-in-out;
+            gap: 15px; /* Промежуток между кнопками */
+            flex-wrap: wrap; /* Для переноса кнопок на новую строку при маленьком экране */
+            justify-content: center;
+        }
+
+        .download-options a {
+            text-decoration: none;
+        }
+
+        .download-options button {
+            background-color: #6c757d; /* Серый цвет для кнопок скачивания */
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            min-width: 180px; /* Минимальная ширина кнопок */
+        }
+
+        .download-options button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            background-color: #5a6268;
+        }
+        /* Стили для конкретных кнопок, если хотите их выделить */
+        .download-options button.mega {
+            background-color: #d92929; /* Красный для MEGA */
+        }
+        .download-options button.mega:hover {
+            background-color: #b02121;
+        }
+        .download-options button.drive {
+            background-color: #4285F4; /* Синий для Google Drive */
+        }
+        .download-options button.drive:hover {
+            background-color: #357ae8;
+        }
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.1); opacity: 0; }
+            50% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.1); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Полный пак GameSense</h1>
+        <p>Полный набор LUA, CFG и сетов для GameSense, готовый к использованию.</p>
+        <p>Нажмите кнопку ниже, чтобы скачать.</p>
+        <div class="button-wrapper">
+            <button id="downloadButton" class="animated-button">Скачать</button>
+        </div>
+        <div id="passwordContainer" class="password-container">
+            <input type="password" id="passwordInput" placeholder="Введите пароль">
+            <button id="submitPasswordButton">Подтвердить</button>
+            <div id="errorMessage" class="error-message">Неверный пароль.</div>
+        </div>
+
+        <div id="downloadOptions" class="download-options">
+            <a href="https://mega.nz/file/fnhjzZqY#W9LmOrlbsQLPKZ2jwoSWew25lh5dszMTTCG8Vj7oY9I" target="_blank">
+                <button class="mega">Скачать с MEGA</button>
+            </a>
+            <a href="https://drive.google.com/file/d/1wLBRJKV_pLBOu4W8RToyIWhOuq-Wc4yb/view" target="_blank">
+                <button class="drive">Скачать с Google Drive</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const correctPassword = 'VXuNlcjm'; // <-- Вставьте сюда ваш пароль
+        
+        const downloadButton = document.getElementById('downloadButton');
+        const passwordContainer = document.getElementById('passwordContainer');
+        const passwordInput = document.getElementById('passwordInput');
+        const submitPasswordButton = document.getElementById('submitPasswordButton');
+        const errorMessage = document.getElementById('errorMessage');
+        const downloadOptions = document.getElementById('downloadOptions');
+
+        downloadButton.addEventListener('click', () => {
+            passwordContainer.style.display = 'flex'; // Используем flex для центрирования элементов ввода
+            downloadButton.style.display = 'none'; // Скрываем кнопку "Скачать"
+            errorMessage.style.display = 'none'; // Скрываем сообщение об ошибке, если оно было
+            passwordInput.focus(); // Устанавливаем фокус на поле ввода пароля
+        });
+
+        submitPasswordButton.addEventListener('click', () => {
+            if (passwordInput.value === correctPassword) {
+                passwordContainer.style.display = 'none'; // Скрываем поле ввода пароля
+                downloadOptions.style.display = 'flex'; // Показываем кнопки скачивания
+                errorMessage.style.display = 'none'; // Скрываем сообщение об ошибке
+            } else {
+                errorMessage.style.display = 'block';
+                passwordInput.value = '';
+            }
+        });
+
+        // Позволяет нажать Enter для подтверждения
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                submitPasswordButton.click();
+            }
+        });
+    </script>
+</body>
+</html>
+
